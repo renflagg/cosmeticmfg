@@ -686,17 +686,89 @@
     .pulse-card-cta::after { content: ' →'; }
 
     /* ══════════════════════════════
-       6. TESTIMONIALS
+       6. VALUE PROPS + TESTIMONIALS
     ══════════════════════════════ */
     #testimonials {
       background: var(--white);
+    }
+
+    /* Value proposition cards */
+    .value-props-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+
+    .value-card {
+      padding: 40px 36px;
+      background: var(--green);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow var(--transition);
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+
+    .value-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .value-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .value-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+    }
+
+    .value-card-icon {
+      width: 32px;
+      height: 32px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+
+    /* Testimonial sub-section */
+    .testi-subheader {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .testi-subheader h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      margin-bottom: 10px;
+    }
+
+    .testi-subheader .testi-subtitle {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin: 0 auto;
+      max-width: 520px;
     }
 
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
-      margin-top: 64px;
     }
 
     .testi-card {
@@ -794,6 +866,12 @@
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+
+    .contact-ren:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .ren-avatar {
@@ -823,18 +901,15 @@
       color: var(--ink-soft);
     }
 
-    .ren-link {
+    .ren-linkedin-icon {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.8rem;
-      font-weight: 500;
       color: var(--green);
-      text-decoration: none;
+      flex-shrink: 0;
       transition: color 0.2s;
     }
 
-    .ren-link:hover { color: var(--green-light); }
+    a:hover .ren-linkedin-icon { color: var(--green-light); }
 
     /* Form */
     .contact-form-wrap {
@@ -988,6 +1063,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .value-props-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .contact-inner {
         grid-template-columns: 1fr;
         gap: 48px;
@@ -1025,6 +1104,11 @@
       .capabilities-grid {
         grid-template-columns: 1fr;
         gap: 0;
+      }
+
+      .value-props-grid {
+        grid-template-columns: 1fr;
+        margin-bottom: 60px;
       }
 
       .testimonials-grid {
@@ -1130,7 +1214,7 @@
 
         <div class="hero-actions reveal reveal-delay-3">
           <a href="#contact" class="btn btn-primary">Get Introduced</a>
-          <a href="#packaging-pulse" class="btn btn-outline">See What's Possible</a>
+          <a href="#capabilities" class="btn btn-outline">See What's Possible</a>
         </div>
       </div>
     </div>
@@ -1454,13 +1538,51 @@
 
 
   <!-- ══════════════════════════════
-       6. TESTIMONIALS
+       6. VALUE PROPS + TESTIMONIALS
   ══════════════════════════════ -->
-  <section id="testimonials" aria-labelledby="testi-heading">
+  <section id="testimonials" aria-labelledby="value-heading">
     <div class="container">
+
+      <!-- Part A: Why Founders Choose Us -->
       <div class="section-header">
-        <span class="section-label reveal">Founder Outcomes</span>
-        <h2 id="testi-heading" class="reveal reveal-delay-1">Real founders. Real outcomes.</h2>
+        <span class="section-label reveal">Why Work With Us</span>
+        <h2 id="value-heading" class="reveal reveal-delay-1">Why Founders Choose Us</h2>
+      </div>
+
+      <div class="value-props-grid">
+
+        <article class="value-card reveal">
+          <svg class="value-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.6" fill="none"/>
+            <path d="M10 16l4 4 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Zero Cost. Zero Risk.</h3>
+          <p>The introduction is always free. No retainers, no pitch decks, no commitments. If we can't make the right match, we'll tell you.</p>
+        </article>
+
+        <article class="value-card reveal reveal-delay-2">
+          <svg class="value-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <h3>Vetted, Not Just Listed.</h3>
+          <p>Every manufacturer in our network has been personally qualified for responsiveness, compliance, and production capacity. Not a directory — a curated network.</p>
+        </article>
+
+        <article class="value-card reveal reveal-delay-4">
+          <svg class="value-card-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26 L6 18 Q6 10 16 10 Q26 10 26 18 L26 26" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <circle cx="16" cy="7" r="3" stroke="currentColor" stroke-width="1.6" fill="none"/>
+          </svg>
+          <h3>From First Run to Full Scale.</h3>
+          <p>Whether you're manufacturing for the first time or optimizing a supply chain that's been running for years, we work at your stage, not above it.</p>
+        </article>
+
+      </div>
+
+      <!-- Part B: Testimonials -->
+      <div class="testi-subheader">
+        <h2 class="reveal">What founders say about working with our network</h2>
+        <p class="testi-subtitle reveal reveal-delay-1">CosmeticMFG is part of a trusted introduction network with a proven track record across industries.</p>
       </div>
 
       <div class="testimonials-grid">
@@ -1526,31 +1648,29 @@
             No pitch decks. No spam. This goes directly to our collaborator, Ren.
           </p>
 
-          <div class="contact-ren" role="region" aria-label="Contact person information">
-            <div class="ren-avatar" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6" fill="none"/>
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-              </svg>
+          <a
+            href="https://www.linkedin.com/in/renflagg"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Ren Flagg on LinkedIn (opens in new tab)"
+            style="text-decoration:none;display:block;"
+          >
+            <div class="contact-ren" role="region" aria-label="Contact person information">
+              <div class="ren-avatar">
+                <img src="/ren-flagg.jpg" alt="Ren Flagg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top;" />
+              </div>
+              <div class="ren-info">
+                <p class="ren-name">Ren Flagg</p>
+                <p class="ren-title">Manufacturing Liaison · CosmeticMFG</p>
+              </div>
+              <span class="ren-linkedin-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </span>
             </div>
-            <div class="ren-info">
-              <p class="ren-name">Ren Flagg</p>
-              <p class="ren-title">Manufacturing Liaison · CosmeticMFG</p>
-            </div>
-            <a
-              href="https://www.linkedin.com/in/renflagg"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="ren-link"
-              aria-label="Ren Flagg on LinkedIn (opens in new tab)"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-              LinkedIn
-            </a>
-          </div>
+          </a>
         </div>
 
         <div class="contact-form-wrap reveal reveal-delay-2">

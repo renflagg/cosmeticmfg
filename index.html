@@ -3,1041 +3,1761 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CosmeticMFG — Global Contract Manufacturing Network</title>
-  <meta name="description" content="Access a vetted global network of contract manufacturers — nearshore, onshore, and offshore. Built for supply chain leaders who need better costs, reliability, and proximity." />
+  <title>CosmeticMFG — Manufacturing Introductions for Beauty Founders</title>
+  <meta name="description" content="CosmeticMFG connects cosmetic and beauty founders to vetted manufacturers across the US, Mexico, and Asia. The introduction is always free." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --bg:        #0a0a0a;
-      --surface:   #111113;
-      --surface2:  #161618;
-      --border:    #222226;
-      --border2:   #2e2e34;
-      --accent:    #00c2ff;
-      --accent-dim: rgba(0, 194, 255, 0.12);
-      --accent-glow: rgba(0, 194, 255, 0.06);
-      --text:      #f0f0f0;
-      --text-dim:  #c0c0cc;
-      --text-muted:#aaaaaa;
-      --danger:    #ff4444;
-      --mono:      'Courier New', Courier, monospace;
-      --sans:      -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      --cream: #FAFAF7;
+      --green: #2D4A3E;
+      --green-light: #3d6456;
+      --green-pale: #e8efec;
+      --ink: #1a1a18;
+      --ink-mid: #4a4a46;
+      --ink-soft: #7a7a74;
+      --border: #e2e2dc;
+      --white: #ffffff;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', system-ui, sans-serif;
+      --shadow-sm: 0 2px 8px rgba(45,74,62,0.07);
+      --shadow-md: 0 8px 32px rgba(45,74,62,0.12);
+      --shadow-lg: 0 20px 60px rgba(45,74,62,0.16);
+      --radius: 4px;
+      --radius-lg: 8px;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* ─── UTILITY ─────────────────────────────────── */
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
-    .section    { padding: 6rem 0; }
-    .section-alt { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-    .label {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
+    img {
       display: block;
+      max-width: 100%;
     }
 
-    h2 {
-      font-size: clamp(1.9rem, 4vw, 2.9rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .lead {
-      font-size: 1.05rem;
-      color: var(--text-dim);
-      max-width: 580px;
-      line-height: 1.7;
-    }
-
-    /* ─── BUTTONS ─────────────────────────────────── */
-    .btn {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.9rem;
-      font-weight: bold;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    a {
+      color: var(--green);
       text-decoration: none;
-      padding: 0.9rem 2.2rem;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
     }
-    .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+      border-radius: var(--radius);
+    }
+
+    /* ─── Typography ─── */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
+    p { font-size: 1rem; color: var(--ink-mid); }
+
+    /* ─── Containers ─── */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    /* ─── Scroll Animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform 0.2s ease;
+      border: 2px solid transparent;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:active { transform: translateY(1px); }
 
     .btn-primary {
-      background: var(--accent);
-      color: #000;
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+      border-color: var(--green-light);
+      box-shadow: var(--shadow-md);
     }
 
     .btn-outline {
       background: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent);
+      color: var(--green);
+      border-color: var(--green);
     }
-    .btn-outline:hover { background: var(--accent-dim); }
 
-    /* ─── NAV ─────────────────────────────────────── */
-    nav {
+    .btn-outline:hover {
+      background: var(--green-pale);
+    }
+
+    /* ─── Section Labels ─── */
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    /* ══════════════════════════════
+       1. STICKY NAV
+    ══════════════════════════════ */
+    #nav {
       position: sticky;
       top: 0;
-      z-index: 200;
-      height: 56px;
+      z-index: 100;
+      background: rgba(250, 250, 247, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease;
+    }
+
+    #nav.scrolled {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2rem;
-      background: rgba(10, 10, 10, 0.94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
+      height: 68px;
     }
 
     .nav-logo {
-      font-family: var(--mono);
-      font-size: 0.9rem;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
       text-decoration: none;
     }
 
-    .nav-right { display: flex; align-items: center; gap: 2rem; }
-    .nav-link {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.15s;
+    .nav-logo:hover { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
     }
-    .nav-link:hover { color: var(--text); }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--green);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      font-weight: bold;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #000;
-      background: var(--accent);
-      padding: 0.45rem 1.1rem;
+      padding: 10px 22px;
+      font-size: 0.88rem;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+      padding: 16px 0 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-mobile.open { display: block; }
+
+    .nav-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-mobile ul a {
+      display: block;
+      padding: 10px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink-mid);
       text-decoration: none;
-      transition: opacity 0.15s;
-    }
-    .nav-cta:hover { opacity: 0.85; }
-
-    @media (max-width: 600px) {
-      .nav-link { display: none; }
+      border-bottom: 1px solid var(--border);
     }
 
-    /* ─── HERO ────────────────────────────────────── */
-    .hero {
+    .nav-mobile ul a:hover { color: var(--green); }
+
+    .nav-mobile .btn {
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ══════════════════════════════
+       2. HERO
+    ══════════════════════════════ */
+    #hero {
       position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0;
       overflow: hidden;
-      padding: 8rem 2rem 7rem;
     }
 
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.18;
+    }
+
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% -10%, rgba(0,194,255,0.07) 0%, transparent 65%),
-        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.015) 59px, rgba(255,255,255,0.015) 60px),
-        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.015) 59px, rgba(255,255,255,0.015) 60px);
-      pointer-events: none;
+      background: linear-gradient(
+        135deg,
+        rgba(250,250,247,0.92) 0%,
+        rgba(250,250,247,0.75) 50%,
+        rgba(250,250,247,0.88) 100%
+      );
     }
 
-    .hero-inner { max-width: 1080px; margin: 0 auto; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.15em;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(0,194,255,0.25);
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 2.2rem;
+      color: var(--green);
+      margin-bottom: 24px;
     }
+
     .hero-eyebrow::before {
       content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--green);
     }
 
-    .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.02;
-      max-width: 860px;
-      margin-bottom: 1.8rem;
+    #hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      color: var(--ink);
     }
 
-    .hero h1 .accent { color: var(--accent); }
+    #hero h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
 
     .hero-sub {
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
-      color: var(--text-dim);
-      max-width: 620px;
-      margin-bottom: 3rem;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--ink-mid);
+      max-width: 580px;
       line-height: 1.7;
+      margin-bottom: 44px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 14px;
       align-items: center;
     }
 
-    .hero-meta {
-      margin-top: 4rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 3.5rem;
-      flex-wrap: wrap;
+    /* ══════════════════════════════
+       3. CREDIBILITY BAR
+    ══════════════════════════════ */
+    #credibility {
+      padding: 0;
+      background: var(--green);
     }
 
-    .hero-stat-num {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-    .hero-stat-label {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* ─── TRUST BAR ───────────────────────────────── */
-    .trust-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      padding: 1.2rem 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-    }
-    .trust-item {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .trust-item::before {
-      content: '//';
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    /* ─── PROBLEM ─────────────────────────────────── */
-    .problem-grid {
+    .cred-inner {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 3.5rem;
-      border: 1px solid var(--border);
-    }
-    @media (max-width: 720px) { .problem-grid { grid-template-columns: 1fr; } }
-
-    .problem-card {
-      background: var(--surface2);
-      padding: 2.2rem 2rem;
-      border-right: 1px solid var(--border);
-      position: relative;
-    }
-    .problem-card:last-child { border-right: none; }
-
-    .problem-icon {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.4rem;
-      color: var(--accent);
-      font-size: 1.1rem;
     }
 
-    .problem-card h3 {
-      font-size: 1.05rem;
+    .cred-item {
+      padding: 36px 48px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .cred-item:last-child { border-right: none; }
+
+    .cred-number {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 700;
-      margin-bottom: 0.7rem;
-      letter-spacing: -0.01em;
+      color: var(--white);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
     }
 
-    .problem-card p {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.7;
+    .cred-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    /* ─── SOLUTION ────────────────────────────────── */
-    .solution-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-      margin-bottom: 3.5rem;
+    /* ══════════════════════════════
+       4. CAPABILITIES
+    ══════════════════════════════ */
+    #capabilities {
+      background: var(--white);
     }
-    @media (max-width: 720px) { .solution-header { grid-template-columns: 1fr; gap: 2rem; } }
 
-    .tier-grid {
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 72px;
+    }
+
+    .section-header p {
+      margin-top: 16px;
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+    }
+
+    .capabilities-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      border: 1px solid var(--border);
+      gap: 2px;
     }
-    @media (max-width: 720px) { .tier-grid { grid-template-columns: 1fr; } }
 
-    .tier-card {
-      background: var(--surface);
-      padding: 2rem 1.8rem;
-      border-right: 1px solid var(--border);
+    .cap-card {
+      padding: 44px 36px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      transition: background var(--transition), box-shadow var(--transition), transform 0.3s ease;
       position: relative;
+      overflow: hidden;
     }
-    .tier-card:last-child { border-right: none; }
-    .tier-card::before {
+
+    .cap-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .tier-card:hover::before { opacity: 1; }
-
-    .tier-label {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
+      width: 3px;
+      height: 0;
+      background: var(--green);
+      transition: height 0.4s ease;
     }
 
-    .tier-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+    .cap-card:hover {
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
     }
 
-    .tier-card p {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
+    .cap-card:hover::before { height: 100%; }
 
-    .tier-locations {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .tier-locations li {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .tier-locations li::before {
-      content: '→';
-      color: var(--accent);
-      font-size: 0.7rem;
-    }
-
-    /* ─── SERVICES ────────────────────────────────── */
-    .services-header {
-      margin-bottom: 3rem;
-    }
-
-    .services-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      border: 1px solid var(--border);
-    }
-    @media (max-width: 700px) { .services-cols { grid-template-columns: 1fr; } }
-
-    .services-col {
-      background: var(--surface2);
-      padding: 2.2rem 2rem;
-      border-right: 1px solid var(--border);
-    }
-    .services-col:last-child { border-right: none; }
-
-    .services-col-label {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .services-col h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 1.4rem;
-      color: var(--text);
-    }
-
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-    .service-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1rem;
-      color: var(--text-dim);
-    }
-    .service-list li::before {
-      content: '';
+    .cap-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 24px;
+      color: var(--green);
       flex-shrink: 0;
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
     }
 
-    /* ─── TESTIMONIALS ────────────────────────────── */
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 3.5rem;
-      border: 1px solid var(--border);
-    }
-    @media (max-width: 720px) { .proof-grid { grid-template-columns: 1fr; } }
-
-    .proof-card {
-      background: var(--surface2);
-      padding: 2.2rem 2rem;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-    }
-    .proof-card:last-child { border-right: none; }
-
-    .proof-bar {
-      width: 32px;
-      height: 3px;
-      background: var(--accent);
-      margin-bottom: 1.4rem;
+    .cap-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      color: var(--ink);
     }
 
-    .proof-quote {
-      font-size: 1rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-      flex: 1;
-      margin-bottom: 1.8rem;
-    }
-
-    .proof-tag {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(0,194,255,0.25);
-      padding: 0.25rem 0.6rem;
-      margin-bottom: 0.7rem;
-    }
-
-    .proof-role {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      letter-spacing: 0.04em;
-    }
-
-    /* ─── CONTACT FORM ────────────────────────────── */
-    .form-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    .form-wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
-
-    .form-header { margin-bottom: 3rem; }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .field label {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 1rem;
-      padding: 0.8rem 1rem;
-      width: 100%;
-      outline: none;
-      border-radius: 0;
-      -webkit-appearance: none;
-      transition: border-color 0.15s;
-    }
-    .field input::placeholder,
-    .field textarea::placeholder { color: var(--text-muted); font-size: 1rem; }
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus { border-color: var(--accent); }
-    .field textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
-
-    .field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888896' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      padding-right: 2.5rem;
-      cursor: pointer;
-    }
-    .field select option { background: #1a1a1e; }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-
-    .form-submit {
-      width: 100%;
-      margin-top: 0.5rem;
-      font-family: var(--mono);
-      font-size: 1rem;
-      font-weight: bold;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #000;
-      background: var(--accent);
-      border: none;
-      padding: 1.05rem;
-      cursor: pointer;
-      transition: opacity 0.15s;
-    }
-    .form-submit:hover { opacity: 0.85; }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .form-note {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .form-status {
-      display: none;
-      padding: 1.1rem 1rem;
-      font-family: var(--mono);
+    .cap-card p {
       font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-align: center;
-      margin-top: 1rem;
+      color: var(--ink-soft);
       line-height: 1.6;
     }
-    .form-status.success {
-      background: rgba(0,194,255,0.06);
-      border: 1px solid rgba(0,194,255,0.3);
-      color: var(--accent);
-    }
-    .form-status.error {
-      background: rgba(255,68,68,0.06);
-      border: 1px solid rgba(255,68,68,0.3);
-      color: var(--danger);
+
+    /* ══════════════════════════════
+       5. GLOBAL PACKAGING PULSE
+    ══════════════════════════════ */
+    #packaging-pulse {
+      background: var(--cream);
+      overflow: hidden;
     }
 
-    /* ─── FOOTER ──────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
+    .pulse-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px;
+    }
+
+    .pulse-header-text { max-width: 560px; }
+    .pulse-header-text h2 { margin-bottom: 12px; }
+    .pulse-header-text p { font-size: 1.05rem; }
+
+    .pulse-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      background: var(--green-pale);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse-blink 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Carousel */
+    .carousel-wrapper {
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 24px;
+      cursor: grab;
+      scroll-padding-left: 5%;
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .carousel-track::-webkit-scrollbar-track {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .carousel-track::-webkit-scrollbar-thumb {
+      background: var(--green);
+      border-radius: 2px;
+    }
+
+    .carousel-track:active { cursor: grabbing; }
+
+    .pulse-card {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pulse-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .pulse-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--green-pale);
+    }
+
+    .pulse-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pulse-card-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      background: var(--surface);
     }
 
-    .footer-left {
+    .country-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .capability-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 3px;
+    }
+
+    .pulse-card-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.35;
+    }
+
+    .pulse-card-desc {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .pulse-card-cta {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 500;
+      cursor: pointer;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      font-family: var(--font-sans);
+      text-align: left;
+      width: 100%;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pulse-card-cta:hover { color: var(--green-light); }
+    .pulse-card-cta::after { content: ' →'; }
+
+    /* ══════════════════════════════
+       6. TESTIMONIALS
+    ══════════════════════════════ */
+    #testimonials {
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 64px;
+    }
+
+    .testi-card {
+      padding: 40px 36px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      position: relative;
+      transition: box-shadow var(--transition), transform 0.3s ease;
+    }
+
+    .testi-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .testi-quote {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      line-height: 0.8;
+      color: var(--green);
+      opacity: 0.35;
+      margin-bottom: 16px;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .testi-body {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .testi-meta {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 2px;
     }
-    .footer-logo {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
+
+    .testi-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--ink);
     }
-    .footer-domain {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
+
+    .testi-role {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
     }
-    .footer-right {
-      font-family: var(--mono);
-      font-size: 0.875rem;
-      color: var(--text-muted);
+
+    .testi-outcome {
+      margin-top: 16px;
+      padding: 10px 14px;
+      background: var(--green-pale);
+      border-radius: var(--radius);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green);
       letter-spacing: 0.04em;
     }
-    /* ─── FOCUS STATES (WCAG 2.1 AA) ────────────────── */
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
+
+    /* ══════════════════════════════
+       7. CONTACT FORM
+    ══════════════════════════════ */
+    #contact {
+      background: var(--cream);
     }
-    .field input:focus-visible,
-    .field select:focus-visible,
-    .field textarea:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 0;
-      border-color: var(--accent);
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
     }
-    .form-submit:focus-visible {
-      outline: 2px solid #fff;
-      outline-offset: 2px;
+
+    .contact-left h2 {
+      margin-bottom: 20px;
     }
-    /* Remove default outline only where we supply our own */
-    .field input, .field select, .field textarea { outline: none; }
+
+    .contact-left .lead {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .contact-ren {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .ren-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .ren-avatar svg { color: var(--green); }
+
+    .ren-info { flex: 1; }
+
+    .ren-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .ren-title {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .ren-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--green);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .ren-link:hover { color: var(--green-light); }
+
+    /* Form */
+    .contact-form-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 7px;
+      letter-spacing: 0.01em;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--ink-soft);
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: #c2c2bc;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(45,74,62,0.1);
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a4a46' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-submit {
+      margin-top: 28px;
+    }
+
+    .form-submit .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 1rem;
+    }
+
+    #form-success {
+      display: none;
+      padding: 24px;
+      background: var(--green-pale);
+      border: 1px solid var(--green);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    #form-success p {
+      color: var(--green);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* ══════════════════════════════
+       8. FOOTER
+    ══════════════════════════════ */
+    #footer {
+      background: var(--ink);
+      padding: 52px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-hq {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 360px;
+      line-height: 1.6;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .footer-copyright {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-domain {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .contact-left h2 { max-width: 480px; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-toggle { display: flex; }
+
+      #hero { min-height: 70vh; padding: 72px 0; }
+
+      #hero h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+
+      .cred-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .cred-item {
+        padding: 28px 32px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+      }
+
+      .cred-item:last-child { border-bottom: none; }
+
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .contact-form-wrap {
+        padding: 28px 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .pulse-card { flex: 0 0 280px; }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-right { align-items: flex-start; }
+
+      .pulse-header { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+    }
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body>
 
-<!-- ── NAV ──────────────────────────────────────────── -->
-<nav>
-  <a class="nav-logo" href="#">CosmeticMFG</a>
-  <div class="nav-right">
-    <a class="nav-link" href="#solution">Network</a>
-    <a class="nav-link" href="#services">Services</a>
-    <a class="nav-cta" href="#contact">Free Intro Call</a>
-  </div>
-</nav>
+  <!-- ══════════════════════════════
+       1. STICKY NAV
+  ══════════════════════════════ -->
+  <header id="nav" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="#hero" class="nav-logo" aria-label="CosmeticMFG home">CosmeticMFG</a>
 
-<!-- ── HERO ─────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Global Contract Manufacturing Network</div>
-
-    <h1>Your CM is costing you<br /><span class="accent">more than you think.</span></h1>
-
-    <p class="hero-sub">
-      Margins disappearing. Lead times slipping. Your manufacturer 10,000 miles away isn't losing sleep over it — but you are. We connect operations leaders at established brands with a vetted global network of contract manufacturers: nearshore, onshore, and offshore.
-    </p>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#contact">Request a Free Intro Call</a>
-      <a class="btn btn-outline" href="#solution">See the Network</a>
-    </div>
-
-    <div class="hero-meta">
-      <div>
-        <div class="hero-stat-num">200+</div>
-        <div class="hero-stat-label">Vetted Manufacturers</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">12</div>
-        <div class="hero-stat-label">Countries</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">3</div>
-        <div class="hero-stat-label">Sourcing Tiers</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">$0</div>
-        <div class="hero-stat-label">Cost to Get Started</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TRUST BAR ─────────────────────────────────────── -->
-<div class="trust-bar">
-  <span class="trust-item">ISO 13485 Certified Facilities</span>
-  <span class="trust-item">FDA-Registered</span>
-  <span class="trust-item">cGMP Compliant</span>
-  <span class="trust-item">NDA-Protected</span>
-  <span class="trust-item">Nearshore · Onshore · Offshore</span>
-</div>
-
-<!-- ── PROBLEM ───────────────────────────────────────── -->
-<section class="section" id="problem">
-  <div class="container">
-    <span class="label">The Problem</span>
-    <h2>Your current CM is working against you.</h2>
-
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">$</div>
-        <h3>Too Expensive</h3>
-        <p>
-          Labor costs, freight, duties, and currency fluctuations are compounding. What looked competitive three years ago is quietly destroying your margins today — and your CM has no incentive to fix it.
-        </p>
-      </div>
-
-      <div class="problem-card">
-        <div class="problem-icon">!</div>
-        <h3>Too Unreliable</h3>
-        <p>
-          Missed deadlines, inconsistent quality, and communication gaps across time zones. Geopolitical instability has made single-country supply chains a liability. You need a backup. You need options.
-        </p>
-      </div>
-
-      <div class="problem-card">
-        <div class="problem-icon">⊘</div>
-        <h3>Too Inconvenient</h3>
-        <p>
-          Auditing a factory you've never visited, resolving defects via a 14-hour time zone gap, and flying overseas for what should be a routine check. Proximity matters — and proximity costs less than you expect.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SOLUTION ──────────────────────────────────────── -->
-<section class="section section-alt" id="solution">
-  <div class="container">
-    <div class="solution-header">
-      <div>
-        <span class="label">The Network</span>
-        <h2>One vetted network. Three strategic tiers.</h2>
-      </div>
-      <div>
-        <p class="lead" style="margin-top:1rem;">
-          Every manufacturer in our network has been qualified for responsiveness, compliance, and production capacity — not just listed. We match you to the right tier for your cost model, risk profile, and product category.
-        </p>
-      </div>
-    </div>
-
-    <div class="tier-grid">
-      <div class="tier-card">
-        <div class="tier-label">Tier 01</div>
-        <h3>Nearshore</h3>
-        <p>Drive-distance audits. Faster freight. Shared time zones. All the cost advantages of offshore with a fraction of the operational drag.</p>
-        <ul class="tier-locations">
-          <li>Mexico</li>
-          <li>Costa Rica</li>
+        <ul class="nav-links" role="list">
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#packaging-pulse">Global Packaging Pulse</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
 
-      <div class="tier-card">
-        <div class="tier-label">Tier 02</div>
-        <h3>Onshore</h3>
-        <p>Domestic manufacturing for brands that need regulatory simplicity, fastest response times, or customer-facing "Made in USA" positioning.</p>
-        <ul class="tier-locations">
-          <li>California</li>
-          <li>Colorado</li>
-          <li>Wisconsin</li>
-        </ul>
-      </div>
+        <a href="#contact" class="btn btn-primary nav-cta" aria-label="Get introduced to a manufacturer">Get Introduced</a>
 
-      <div class="tier-card">
-        <div class="tier-label">Tier 03</div>
-        <h3>Offshore</h3>
-        <p>High-volume production at competitive cost structures, with manufacturers vetted for quality systems and geopolitical diversification.</p>
-        <ul class="tier-locations">
-          <li>Taiwan</li>
-          <li>Vietnam</li>
-          <li>India</li>
-          <li>Malaysia</li>
-          <li>Thailand</li>
-          <li>China</li>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-mobile"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div id="nav-mobile" class="nav-mobile" aria-hidden="true">
+        <ul role="list">
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#packaging-pulse">Global Packaging Pulse</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
+        <a href="#contact" class="btn btn-primary">Get Introduced</a>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ── SERVICES ───────────────────────────────────────── -->
-<section class="section" id="services">
-  <div class="container">
-    <div class="services-header">
-      <span class="label">Capabilities</span>
-      <h2>What our network manufactures.</h2>
+
+  <!-- ══════════════════════════════
+       2. HERO
+  ══════════════════════════════ -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1800&auto=format&fit=crop&q=80"
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
 
-    <div class="services-cols">
-      <div class="services-col">
-        <div class="services-col-label">Product Development</div>
-        <h3>From Brief to Shelf</h3>
-        <ul class="service-list">
-          <li>Product Design</li>
-          <li>Development &amp; Formulation</li>
-          <li>Prototyping &amp; Sampling</li>
-          <li>Manufacturing</li>
-          <li>Packaging</li>
-          <li>Delivery &amp; Logistics</li>
-        </ul>
-      </div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow reveal">Manufacturing Introductions for Beauty Founders</span>
 
-      <div class="services-col">
-        <div class="services-col-label">Contract Manufacturing</div>
-        <h3>Production Capabilities</h3>
-        <ul class="service-list">
-          <li>PCB &amp; PCBA</li>
-          <li>Injection Molding</li>
-          <li>Metal Forming &amp; CNC</li>
-          <li>Cables &amp; Wire Harnesses</li>
-          <li>Assembly &amp; Testing</li>
-          <li>Packaging</li>
-          <li>Supply Chain Management</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+        <h1 class="reveal reveal-delay-1">
+          Your packaging deserves a manufacturer<br />
+          <em>that gets it.</em>
+        </h1>
 
-<!-- ── TESTIMONIALS ──────────────────────────────────── -->
-<section class="section section-alt" id="proof">
-  <div class="container">
-    <span class="label">Case Studies</span>
-    <h2>Operations leaders who made the switch.</h2>
-
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="proof-bar"></div>
-        <p class="proof-quote">
-          We moved medical device manufacturing to an ISO 13485-certified facility 20 minutes from the San Diego border. Quality has been excellent, labor rates are materially better, and our ops team can do a site visit in the same morning.
+        <p class="hero-sub reveal reveal-delay-2">
+          From first run to full scale — we connect cosmetic founders to vetted manufacturers
+          across the US, Mexico, and Asia. The introduction is always free.
         </p>
-        <div class="proof-tag">Nearshore · Medical Devices</div>
-        <div class="proof-role">VP of Operations, Medical Device Brand</div>
-      </div>
 
-      <div class="proof-card">
-        <div class="proof-bar"></div>
-        <p class="proof-quote">
-          After 15 years running production out of a single Chinese facility, geopolitical risk finally forced our hand. We transferred to a diversified network and haven't looked back. We should have done it five years earlier.
-        </p>
-        <div class="proof-tag">Offshore Diversification · Consumer CPG</div>
-        <div class="proof-role">Director of Supply Chain, Consumer Goods Brand</div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-bar"></div>
-        <p class="proof-quote">
-          We needed to scale an industrial electronics device from prototype to mass production. Getting apples-to-apples quotes across three continents in parallel — with the same spec sheet and timeline — was something we couldn't have done on our own.
-        </p>
-        <div class="proof-tag">Scale-Up · Industrial Electronics</div>
-        <div class="proof-role">Procurement Director, AgTech Hardware Company</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACT FORM ──────────────────────────────────── -->
-<section class="form-section" id="contact">
-  <div class="form-wrap">
-    <div class="form-header">
-      <span class="label">Get Started</span>
-      <h2>Request a free intro call.</h2>
-      <p class="lead" style="margin-top:1rem;">
-        Tell us about your manufacturing situation. Ren will personally review your submission and follow up within 24 hours.
-      </p>
-    </div>
-
-    <!-- Replace YOUR_FORM_ID with your Formspree endpoint -->
-    <form id="contactForm" action="https://formspree.io/f/mojpylkb" method="POST" novalidate>
-
-      <div class="form-row">
-        <div class="field">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-primary">Get Introduced</a>
+          <a href="#packaging-pulse" class="btn btn-outline">See What's Possible</a>
         </div>
-        <div class="field">
-          <label for="company">Company Name</label>
-          <input type="text" id="company" name="company" placeholder="Acme Corp" required />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       3. CREDIBILITY BAR
+  ══════════════════════════════ -->
+  <div id="credibility" role="region" aria-label="Key stats">
+    <div class="container">
+      <div class="cred-inner">
+        <div class="cred-item reveal">
+          <span class="cred-number">20+</span>
+          <span class="cred-label">Vetted Manufacturers</span>
+        </div>
+        <div class="cred-item reveal reveal-delay-1">
+          <span class="cred-number">10</span>
+          <span class="cred-label">Countries</span>
+        </div>
+        <div class="cred-item reveal reveal-delay-2">
+          <span class="cred-number">Always Free</span>
+          <span class="cred-label">The Introduction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════
+       4. CAPABILITIES
+  ══════════════════════════════ -->
+  <section id="capabilities" aria-labelledby="cap-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">What We Source</span>
+        <h2 id="cap-heading" class="reveal reveal-delay-1">From mold to shelf — we know who makes it happen.</h2>
+      </div>
+
+      <div class="capabilities-grid">
+
+        <article class="cap-card reveal">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="8" width="24" height="28" rx="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <path d="M16 8v-2a2 2 0 012-2h8a2 2 0 012 2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="16" y1="20" x2="28" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="16" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Custom Bottles, Jars &amp; Tubes</h3>
+          <p>Injection molded plastic in any shape or finish — from frosted PE to high-gloss acrylic and beyond.</p>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-1">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="12" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <circle cx="22" cy="22" r="6" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <line x1="22" y1="4" x2="22" y2="10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="22" y1="34" x2="22" y2="40" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="4" y1="22" x2="10" y2="22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="34" y1="22" x2="40" y2="22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Metal Components &amp; Closures</h3>
+          <p>Precision stamped and CNC machined metal parts — caps, compacts, crimp rings, and decorative hardware.</p>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-2">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 30 C8 26 8 14 14 10 C20 6 30 10 32 16 C36 24 30 36 22 36 C18 36 14 33 14 30Z" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <path d="M20 26 C17 24 16 19 18 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Silicone &amp; Flexible Parts</h3>
+          <p>Soft-touch applicators, seals, and flexible components — ideal for skincare dispensers and specialty formats.</p>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-3">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 22l8 8 20-16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="1.8" fill="none"/>
+          </svg>
+          <h3>Full Assembly &amp; Quality Testing</h3>
+          <p>Complete product assembly with functional QC testing — delivered shelf-ready with documented inspection reports.</p>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-4">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="14" width="32" height="20" rx="3" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <path d="M14 14V10a2 2 0 012-2h12a2 2 0 012 2v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="6" y1="22" x2="38" y2="22" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <h3>Retail-Ready Packaging</h3>
+          <p>Box, insert, wrapped and shelf-ready — from folding carton dielines to FSC-certified sustainable finishes.</p>
+        </article>
+
+        <article class="cap-card reveal reveal-delay-5">
+          <svg class="cap-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="22" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <circle cx="34" cy="22" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <circle cx="22" cy="10" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <circle cx="22" cy="34" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+            <line x1="14" y1="22" x2="30" y2="22" stroke="currentColor" stroke-width="1.8"/>
+            <line x1="22" y1="14" x2="22" y2="30" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          <h3>End-to-End Supply Chain</h3>
+          <p>From first sample to delivered order, managed for you — sourcing, logistics, customs, and communication.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       5. GLOBAL PACKAGING PULSE
+  ══════════════════════════════ -->
+  <section id="packaging-pulse" aria-labelledby="pulse-heading">
+    <div class="container">
+      <div class="pulse-header reveal">
+        <div class="pulse-header-text">
+          <span class="section-label">Updated Weekly</span>
+          <h2 id="pulse-heading">Global Packaging Pulse</h2>
+          <p>The most innovative cosmetic packaging from around the world — updated weekly. Asia leads. We take notes.</p>
+        </div>
+        <div class="pulse-badge" aria-label="Updated weekly, powered by CosmeticMFG">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Updated weekly — powered by CosmeticMFG
         </div>
       </div>
 
-      <div class="field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="jane@yourcompany.com" required />
+      <div class="carousel-wrapper" role="region" aria-label="Global packaging innovations carousel">
+        <div
+          class="carousel-track"
+          role="list"
+          aria-label="Packaging innovation cards"
+          tabindex="0"
+        >
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="1"
+            data-country="Japan"
+            data-title="Minimalist Magnetic Compact"
+            data-description="Ultra-thin magnetic closure compact using recycled aluminum with a cotton-velvet interior lining."
+            data-capability="Metal Components"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=640&auto=format&fit=crop&q=80"
+              alt="Minimalist makeup compact from Japan"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127471;&#127477; Japan</span>
+                <span class="capability-tag">Metal Components</span>
+              </div>
+              <h3 class="pulse-card-title">Minimalist Magnetic Compact</h3>
+              <p class="pulse-card-desc">Ultra-thin magnetic closure compact using recycled aluminum with a cotton-velvet interior lining.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="2"
+            data-country="South Korea"
+            data-title="Dual-Chamber Airless Pump"
+            data-description="Side-by-side airless pump bottle that dispenses two formulas simultaneously without mixing."
+            data-capability="Custom Bottles"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=640&auto=format&fit=crop&q=80"
+              alt="Skincare pump bottle innovation from South Korea"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127472;&#127479; South Korea</span>
+                <span class="capability-tag">Custom Bottles</span>
+              </div>
+              <h3 class="pulse-card-title">Dual-Chamber Airless Pump</h3>
+              <p class="pulse-card-desc">Side-by-side airless pump bottle that dispenses two formulas simultaneously without mixing.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="3"
+            data-country="China"
+            data-title="Biodegradable Sugarcane Jar"
+            data-description="Molded from bagasse fiber, this sustainable jar replaces single-use plastic for mid-range skincare."
+            data-capability="Retail-Ready Packaging"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=640&auto=format&fit=crop&q=80"
+              alt="Sustainable cosmetic jar from China"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127464;&#127475; China</span>
+                <span class="capability-tag">Retail-Ready Packaging</span>
+              </div>
+              <h3 class="pulse-card-title">Biodegradable Sugarcane Jar</h3>
+              <p class="pulse-card-desc">Molded from bagasse fiber, this sustainable jar replaces single-use plastic for mid-range skincare.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="4"
+            data-country="France"
+            data-title="Refillable Glass Serum Vial"
+            data-description="Pharmacy-inspired borosilicate glass vial with a twist-lock refill module and matte lacquer finish."
+            data-capability="Custom Bottles"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=640&auto=format&fit=crop&q=80"
+              alt="Glass serum vials from France"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127467;&#127479; France</span>
+                <span class="capability-tag">Custom Bottles</span>
+              </div>
+              <h3 class="pulse-card-title">Refillable Glass Serum Vial</h3>
+              <p class="pulse-card-desc">Pharmacy-inspired borosilicate glass vial with a twist-lock refill module and matte lacquer finish.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="5"
+            data-country="USA"
+            data-title="Soft-Touch Silicone Applicator"
+            data-description="Medical-grade silicone face applicator with micro-textured surface, manufactured in California."
+            data-capability="Silicone & Flexible Parts"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1590156206657-aec5ef4b7820?w=640&auto=format&fit=crop&q=80"
+              alt="Silicone beauty applicator from USA"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127482;&#127480; USA</span>
+                <span class="capability-tag">Silicone &amp; Flexible Parts</span>
+              </div>
+              <h3 class="pulse-card-title">Soft-Touch Silicone Applicator</h3>
+              <p class="pulse-card-desc">Medical-grade silicone face applicator with micro-textured surface, manufactured in California.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+          <article
+            class="pulse-card"
+            role="listitem"
+            data-id="6"
+            data-country="Italy"
+            data-title="Embossed Zinc Alloy Compact"
+            data-description="Die-cast zinc alloy compact with hand-finished embossed pattern — luxury feel at accessible MOQ."
+            data-capability="Metal Components"
+          >
+            <img
+              class="pulse-card-img"
+              src="https://images.unsplash.com/photo-1586495777744-4e6232bf5dc5?w=640&auto=format&fit=crop&q=80"
+              alt="Luxury metal compact from Italy"
+              loading="lazy"
+            />
+            <div class="pulse-card-body">
+              <div class="pulse-card-meta">
+                <span class="country-tag">&#127470;&#127481; Italy</span>
+                <span class="capability-tag">Metal Components</span>
+              </div>
+              <h3 class="pulse-card-title">Embossed Zinc Alloy Compact</h3>
+              <p class="pulse-card-desc">Die-cast zinc alloy compact with hand-finished embossed pattern — luxury feel at accessible MOQ.</p>
+              <button
+                class="pulse-card-cta"
+                onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                aria-label="Want to manufacture something like this? Scroll to contact form"
+              >Want to manufacture something like this? We know who can make it.</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════
+       6. TESTIMONIALS
+  ══════════════════════════════ -->
+  <section id="testimonials" aria-labelledby="testi-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">Founder Outcomes</span>
+        <h2 id="testi-heading" class="reveal reveal-delay-1">Real founders. Real outcomes.</h2>
       </div>
 
-      <div class="field">
-        <label for="spend">Annual Manufacturing Spend</label>
-        <select id="spend" name="annual_spend" required>
-          <option value="" disabled selected>Select a range</option>
-          <option value="under-500k">Under $500K</option>
-          <option value="500k-2m">$500K – $2M</option>
-          <option value="2m-10m">$2M – $10M</option>
-          <option value="10m-plus">$10M+</option>
-        </select>
+      <div class="testimonials-grid">
+
+        <article class="testi-card reveal">
+          <span class="testi-quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi-body">
+            We needed ISO certification and better labor rates without sacrificing quality.
+            CosmeticMFG connected us to a facility 20 minutes from the San Diego border in Mexico.
+            The quality exceeded what we had in Asia — at significantly better rates.
+          </p>
+          <div class="testi-meta">
+            <span class="testi-name">Medical Device Company</span>
+            <span class="testi-role">Moved manufacturing to Mexico</span>
+          </div>
+          <div class="testi-outcome">ISO-certified facility · Near-shore production</div>
+        </article>
+
+        <article class="testi-card reveal reveal-delay-2">
+          <span class="testi-quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi-body">
+            After 15 years manufacturing in China, geopolitical risk had us up at night.
+            CosmeticMFG facilitated a full transfer in under 6 months.
+            We never looked back.
+          </p>
+          <div class="testi-meta">
+            <span class="testi-name">Established Beauty Brand</span>
+            <span class="testi-role">15-year China exit, reshored production</span>
+          </div>
+          <div class="testi-outcome">Full production transfer · Zero downtime</div>
+        </article>
+
+        <article class="testi-card reveal reveal-delay-4">
+          <span class="testi-quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi-body">
+            We were scaling from prototype to mass production and had no idea who to trust.
+            CosmeticMFG brought us multiple vetted quotes across three continents.
+            Apples to apples — we found the right partner on the first try.
+          </p>
+          <div class="testi-meta">
+            <span class="testi-name">Industrial Electronics Brand</span>
+            <span class="testi-role">Prototype to mass production</span>
+          </div>
+          <div class="testi-outcome">3-continent bids · Right partner, first try</div>
+        </article>
+
       </div>
+    </div>
+  </section>
 
-      <div class="field">
-        <label for="challenge">What is your biggest manufacturing challenge right now?</label>
-        <textarea id="challenge" name="challenge" placeholder="Tell us about your current situation — costs, reliability issues, capacity needs, or anything else that's top of mind." required></textarea>
+
+  <!-- ══════════════════════════════
+       7. CONTACT FORM
+  ══════════════════════════════ -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-left reveal">
+          <span class="section-label">Free Introduction</span>
+          <h2 id="contact-heading">Tell us what you're building.<br />We'll make the introduction.</h2>
+          <p class="lead">
+            No pitch decks. No spam. This goes directly to our collaborator, Ren.
+          </p>
+
+          <div class="contact-ren" role="region" aria-label="Contact person information">
+            <div class="ren-avatar" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6" fill="none"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="ren-info">
+              <p class="ren-name">Ren Flagg</p>
+              <p class="ren-title">Manufacturing Liaison · CosmeticMFG</p>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/renflagg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ren-link"
+              aria-label="Ren Flagg on LinkedIn (opens in new tab)"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/mojpylkb"
+            method="POST"
+            novalidate
+            aria-label="Request a free manufacturer introduction"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="full-name"
+                  name="full_name"
+                  placeholder="Jane Smith"
+                  required
+                  autocomplete="name"
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email <span aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="jane@yourbrand.com"
+                  required
+                  autocomplete="email"
+                  aria-required="true"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder="Your Brand or Startup"
+                autocomplete="organization"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="journey">Where are you in your manufacturing journey? <span aria-hidden="true">*</span></label>
+              <select id="journey" name="journey" required aria-required="true">
+                <option value="" disabled selected>Select one…</option>
+                <option value="startup-first-run">I'm a startup ready to manufacture for the first time</option>
+                <option value="have-product-need-mfg">I have a product and need a manufacturer</option>
+                <option value="want-better-pricing">I'm currently manufacturing but want better pricing</option>
+                <option value="reshore-china">I want to reshore or move away from China</option>
+                <option value="custom-packaging">I need unique custom packaging</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your product and what you need <span aria-hidden="true">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Describe your product, materials, quantities, timeline, or anything else that's helpful…"
+                required
+                aria-required="true"
+                rows="5"
+              ></textarea>
+            </div>
+
+            <div class="form-submit">
+              <button type="submit" class="btn btn-primary" aria-label="Submit request for free introduction">
+                Request a Free Introduction
+              </button>
+            </div>
+          </form>
+
+          <div id="form-success" role="alert" aria-live="polite">
+            <p>Thanks — Ren will be in touch within 24 hours.</p>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <button type="submit" class="form-submit" id="submitBtn">Request a Free Intro Call &rarr;</button>
-      <p class="form-note">No pitch decks. No spam. This goes directly to our collaborator, <a href="https://www.linkedin.com/in/renflagg" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Ren</a> <a href="https://www.linkedin.com/in/renflagg" target="_blank" rel="noopener noreferrer" aria-label="Ren's LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-left: 2px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
-      <div class="form-status" id="formStatus"></div>
-    </form>
-  </div>
-</section>
 
-<!-- ── FOOTER ────────────────────────────────────────── -->
-<footer>
-  <div class="footer-left">
-    <span class="footer-logo">CosmeticMFG</span>
-    <span class="footer-domain">cosmeticmfg.com</span>
-  </div>
-  <div class="footer-right" style="text-align: right;">
-    <span style="display: block; font-size: 0.7rem; color: var(--text-muted); opacity: 0.55; letter-spacing: 0.04em; margin-bottom: 0.25rem;">Headquartered wherever the work is &mdash; but our hive is in San Diego, CA.</span>
-    <span>&copy; 2026 CosmeticMFG. All rights reserved.</span>
-  </div>
-</footer>
+  <!-- ══════════════════════════════
+       8. FOOTER
+  ══════════════════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-logo">CosmeticMFG</p>
+          <p class="footer-hq" style="margin-top:10px;">
+            Headquartered wherever the work is — but our hive is in San Diego, CA.
+          </p>
+        </div>
+        <div class="footer-right">
+          <p class="footer-copyright">&#169; 2026 CosmeticMFG. A Friend of a Founder initiative.</p>
+          <p class="footer-domain">cosmeticmfg.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<script>
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
-  const submitBtn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+  <script>
+    // ─── Sticky nav shadow ───
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
 
-    // Client-side validation
-    const requiredFields = ['name', 'company', 'email', 'spend', 'challenge'];
-    let valid = true;
+    // ─── Mobile nav toggle ───
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMobile = document.getElementById('nav-mobile');
 
-    requiredFields.forEach(function (id) {
-      const el = document.getElementById(id);
-      if (!el.value.trim()) {
-        el.style.borderColor = 'var(--danger)';
-        valid = false;
-      } else {
-        el.style.borderColor = '';
-      }
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navMobile.classList.toggle('open', !expanded);
+      navMobile.setAttribute('aria-hidden', String(expanded));
     });
 
-    const emailEl = document.getElementById('email');
-    if (emailEl.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-      emailEl.style.borderColor = 'var(--danger)';
-      valid = false;
-    }
-
-    if (!valid) {
-      status.textContent = 'Please complete all required fields before submitting.';
-      status.className = 'form-status error';
-      status.style.display = 'block';
-      return;
-    }
-
-    // Submit
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    status.style.display = 'none';
-
-    try {
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+    navMobile.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navMobile.classList.remove('open');
+        navMobile.setAttribute('aria-hidden', 'true');
       });
+    });
 
-      if (response.ok) {
-        status.textContent = "Thanks — Ren will be in touch within 24 hours to learn about your needs.";
-        status.className = 'form-status success';
-        status.style.display = 'block';
-        form.reset();
-        submitBtn.textContent = 'Request Submitted';
-      } else {
-        throw new Error('Server error');
-      }
-    } catch (err) {
-      status.textContent = 'Something went wrong. Please email us directly or try again.';
-      status.className = 'form-status error';
-      status.style.display = 'block';
-      submitBtn.textContent = 'Request a Free Intro Call →';
-      submitBtn.disabled = false;
-    }
-  });
+    // ─── Scroll reveal ───
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  // Clear error state on edit
-  document.querySelectorAll('input, select, textarea').forEach(function (el) {
-    el.addEventListener('input', function () {
-      el.style.borderColor = '';
-      if (status.classList.contains('error')) {
-        status.style.display = 'none';
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ─── Carousel drag-to-scroll ───
+    const track = document.querySelector('.carousel-track');
+    let isDown = false, startX, scrollLeft;
+
+    track.addEventListener('mousedown', e => {
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    ['mouseleave', 'mouseup'].forEach(evt => {
+      track.addEventListener(evt, () => {
+        isDown = false;
+        track.style.cursor = 'grab';
+      });
+    });
+
+    track.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+    });
+
+    // ─── Formspree AJAX ───
+    const form = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('[type="submit"]');
+      const orig = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          formSuccess.style.display = 'block';
+          formSuccess.focus();
+        } else {
+          btn.disabled = false;
+          btn.textContent = orig;
+          alert('Something went wrong. Please try again.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = orig;
+        alert('Connection error. Please try again.');
       }
     });
-  });
-</script>
+  </script>
 
 </body>
 </html>

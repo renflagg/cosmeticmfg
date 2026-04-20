@@ -21,7 +21,7 @@
     --green-pale: #e8efec;
     --ink: #1a1a18;
     --ink-mid: #4a4a46;
-    --ink-soft: #7a7a74;
+    --ink-soft: #696965;
     --border: #e2e2dc;
     --white: #ffffff;
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -147,10 +147,10 @@
     font-family: var(--font-serif); font-size: 1.2rem;
     font-weight: 700; color: var(--white);
   }
-  .footer-hq { font-size: 0.85rem; color: rgba(255,255,255,0.5); max-width: 340px; }
+  .footer-hq { font-size: 0.9rem; color: rgba(255,255,255,0.55); max-width: 340px; }
   .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-  .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
-  .footer-domain   { font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+  .footer-copyright { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+  .footer-domain   { font-size: 0.875rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
 
   @media (max-width: 768px) {
     .nav-links, .nav-cta { display: none; }
@@ -169,7 +169,7 @@
     }
     .breadcrumb {
       display: flex; align-items: center; justify-content: center;
-      gap: 8px; font-size: 0.8rem; color: var(--ink-soft);
+      gap: 8px; font-size: 0.875rem; color: var(--ink-soft);
       margin-bottom: 20px;
     }
     .breadcrumb a { color: var(--ink-soft); }
@@ -196,7 +196,7 @@
     .article-meta {
       display: flex; align-items: center; justify-content: center;
       flex-wrap: wrap; gap: 10px;
-      font-size: 0.85rem; color: var(--ink-soft);
+      font-size: 0.9rem; color: var(--ink-soft);
     }
 
     /* ── Article body ── */
@@ -265,14 +265,14 @@
     }
     .related-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .related-cat {
-      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--green); margin-bottom: 10px;
     }
     .related-card h3 {
       font-size: 1rem; color: var(--ink); margin-bottom: 10px; line-height: 1.4;
     }
-    .related-meta { font-size: 0.78rem; color: var(--ink-soft); }
+    .related-meta { font-size: 0.875rem; color: var(--ink-soft); }
 
     /* ── CTA section ── */
     .cta-section {
@@ -320,9 +320,20 @@
       .article-hero img { height: 240px; }
       .article-hero-gradient { height: 180px; }
     }
+  /* Skip navigation link for keyboard/screen-reader users */
+  .skip-link {
+    position: absolute; top: -40px; left: 8px; z-index: 9999;
+    background: var(--green); color: var(--white);
+    padding: 8px 16px; border-radius: var(--radius);
+    font-size: 0.9rem; font-weight: 500; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 8px; }
+
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   
   <header id="nav" role="banner">
@@ -337,7 +348,7 @@
         </ul>
         <a href="https://cosmeticmfg.com/#contact" class="btn btn-primary nav-cta">Get Introduced</a>
         <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
-          <span></span><span></span><span></span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
       </nav>
       <div id="nav-mobile" class="nav-mobile" aria-hidden="true">
@@ -352,7 +363,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <article>
       <header class="article-header">
         <div class="container">
@@ -375,7 +386,7 @@
 
       <div class="article-hero"><img src="/images/blog/1776647949162.png" alt="Predictive Maintenance in Cosmetics Manufacturing: Why It Matters" loading="eager" /></div>
 
-      <div class="article-body" role="main">
+      <div class="article-body">
         <div class="container">
           <h2>Your Next Unplanned Outage Is Already Brewing</h2>
 <p>A recent piece in Manufacturing Dive highlights a surprisingly common mistake on factory floors: treating ultrasound and vibration monitoring as an either/or decision. The result? Blind spots in predictive maintenance programs — and unplanned downtime that ripples across every brand depending on that production line.</p>
@@ -438,7 +449,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>
-          <p class="footer-logo">CosmeticMFG</p>
+          <p class="footer-logo" aria-hidden="true">CosmeticMFG</p>
           <p class="footer-hq" style="margin-top:8px">
             Headquartered wherever the work is — but our hive is in San Diego, CA.
           </p>

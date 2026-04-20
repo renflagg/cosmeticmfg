@@ -21,7 +21,7 @@
     --green-pale: #e8efec;
     --ink: #1a1a18;
     --ink-mid: #4a4a46;
-    --ink-soft: #7a7a74;
+    --ink-soft: #696965;
     --border: #e2e2dc;
     --white: #ffffff;
     --font-serif: 'Playfair Display', Georgia, serif;
@@ -147,10 +147,10 @@
     font-family: var(--font-serif); font-size: 1.2rem;
     font-weight: 700; color: var(--white);
   }
-  .footer-hq { font-size: 0.85rem; color: rgba(255,255,255,0.5); max-width: 340px; }
+  .footer-hq { font-size: 0.9rem; color: rgba(255,255,255,0.55); max-width: 340px; }
   .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-  .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
-  .footer-domain   { font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+  .footer-copyright { font-size: 0.875rem; color: rgba(255,255,255,0.5); }
+  .footer-domain   { font-size: 0.875rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
 
   @media (max-width: 768px) {
     .nav-links, .nav-cta { display: none; }
@@ -168,7 +168,7 @@
       text-align: center;
     }
     .blog-hero-label {
-      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      display: inline-block; font-size: 0.875rem; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--green);
       margin-bottom: 14px;
     }
@@ -219,10 +219,10 @@
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
     .post-cat {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: var(--green);
     }
-    .post-meta { font-size: 0.75rem; color: var(--ink-soft); white-space: nowrap; }
+    .post-meta { font-size: 0.875rem; color: var(--ink-soft); white-space: nowrap; }
     .post-title {
       font-size: 1.1rem; line-height: 1.35; font-weight: 600; margin: 0;
     }
@@ -273,9 +273,20 @@
       .blog-hero { padding: 56px 0 44px; }
       .post-thumb { height: 140px; }
     }
+  /* Skip navigation link for keyboard/screen-reader users */
+  .skip-link {
+    position: absolute; top: -40px; left: 8px; z-index: 9999;
+    background: var(--green); color: var(--white);
+    padding: 8px 16px; border-radius: var(--radius);
+    font-size: 0.9rem; font-weight: 500; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 8px; }
+
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   
   <header id="nav" role="banner">
@@ -290,7 +301,7 @@
         </ul>
         <a href="https://cosmeticmfg.com/#contact" class="btn btn-primary nav-cta">Get Introduced</a>
         <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
-          <span></span><span></span><span></span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
       </nav>
       <div id="nav-mobile" class="nav-mobile" aria-hidden="true">
@@ -305,10 +316,10 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <div class="blog-hero">
       <div class="container">
-        <span class="blog-hero-label">From the desk of CosmeticMFG</span>
+        <span class="blog-hero-label" aria-hidden="true">From the desk of CosmeticMFG</span>
         <h1>Insights for Founders</h1>
         <p>Manufacturing strategy, tariff news, and supply chain intelligence — for beauty and CPG brands building for scale.</p>
       </div>
@@ -340,7 +351,7 @@
               <a href="/blog/new-50-tariff-threat-why-beauty-brands-need-nearshore-now.html">New 50% Tariff Threat: Why Beauty Brands Need Nearshore Now</a>
             </h2>
             <p class="post-excerpt">Another Tariff Shock — and This Time, Legal Uncertainty Makes It Worse On April 8, 2026, President Trump announced an immediate 50% tariff on goods…</p>
-            <a href="/blog/new-50-tariff-threat-why-beauty-brands-need-nearshore-now.html" class="post-read-more" aria-label="Read New 50% Tariff Threat: Why Beauty Brands Need Nearshore Now">
+            <a href="/blog/new-50-tariff-threat-why-beauty-brands-need-nearshore-now.html" class="post-read-more" aria-label="Read New 50% Tariff Threat: Why Beauty Brands Need Nearshore Now" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -356,7 +367,7 @@
               <a href="/blog/first-sale-rule-under-fire-what-beauty-brands-should-do-now.html">First Sale Rule Under Fire: What Beauty Brands Should Do Now</a>
             </h2>
             <p class="post-excerpt">The Tariff Loophole Congress Wants to Close For decades, importers have used a valuation method known as the &quot;First Sale&quot; rule to reduce the duties…</p>
-            <a href="/blog/first-sale-rule-under-fire-what-beauty-brands-should-do-now.html" class="post-read-more" aria-label="Read First Sale Rule Under Fire: What Beauty Brands Should Do Now">
+            <a href="/blog/first-sale-rule-under-fire-what-beauty-brands-should-do-now.html" class="post-read-more" aria-label="Read First Sale Rule Under Fire: What Beauty Brands Should Do Now" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -372,7 +383,7 @@
               <a href="/blog/tariff-refund-confusion-is-a-wake-up-call-for-beauty-brands.html">Tariff Refund Confusion Is a Wake-Up Call for Beauty Brands</a>
             </h2>
             <p class="post-excerpt">The Tariff Mess Just Got Messier If you manufacture cosmetics or personal care products overseas and import them into the U.S., you may be owed…</p>
-            <a href="/blog/tariff-refund-confusion-is-a-wake-up-call-for-beauty-brands.html" class="post-read-more" aria-label="Read Tariff Refund Confusion Is a Wake-Up Call for Beauty Brands">
+            <a href="/blog/tariff-refund-confusion-is-a-wake-up-call-for-beauty-brands.html" class="post-read-more" aria-label="Read Tariff Refund Confusion Is a Wake-Up Call for Beauty Brands" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -388,7 +399,7 @@
               <a href="/blog/ai-in-manufacturing-energy-costs-and-why-nearshore-matters.html">AI in Manufacturing: Energy Costs and Why Nearshore Matters</a>
             </h2>
             <p class="post-excerpt">The Hidden Price Tag of AI-Driven Manufacturing AI and robotics are transforming factory floors — optimizing production schedules, reducing waste,…</p>
-            <a href="/blog/ai-in-manufacturing-energy-costs-and-why-nearshore-matters.html" class="post-read-more" aria-label="Read AI in Manufacturing: Energy Costs and Why Nearshore Matters">
+            <a href="/blog/ai-in-manufacturing-energy-costs-and-why-nearshore-matters.html" class="post-read-more" aria-label="Read AI in Manufacturing: Energy Costs and Why Nearshore Matters" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -404,7 +415,7 @@
               <a href="/blog/ai-translation-in-manufacturing-what-it-means-for-nearshore.html">AI Translation in Manufacturing: What It Means for Nearshore</a>
             </h2>
             <p class="post-excerpt">The Language Barrier Is a Safety and Compliance Risk — AI Is Closing the Gap When Volvo and Mars roll out AI-powered translation platforms on the…</p>
-            <a href="/blog/ai-translation-in-manufacturing-what-it-means-for-nearshore.html" class="post-read-more" aria-label="Read AI Translation in Manufacturing: What It Means for Nearshore">
+            <a href="/blog/ai-translation-in-manufacturing-what-it-means-for-nearshore.html" class="post-read-more" aria-label="Read AI Translation in Manufacturing: What It Means for Nearshore" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -420,7 +431,7 @@
               <a href="/blog/what-a-15t-defense-budget-means-for-beauty-supply-chains.html">What a $1.5T Defense Budget Means for Beauty Supply Chains</a>
             </h2>
             <p class="post-excerpt">The Ripple Effect You Didn't See Coming At first glance, a $1.5 trillion Department of Defense budget proposal has nothing to do with your next…</p>
-            <a href="/blog/what-a-15t-defense-budget-means-for-beauty-supply-chains.html" class="post-read-more" aria-label="Read What a $1.5T Defense Budget Means for Beauty Supply Chains">
+            <a href="/blog/what-a-15t-defense-budget-means-for-beauty-supply-chains.html" class="post-read-more" aria-label="Read What a $1.5T Defense Budget Means for Beauty Supply Chains" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -436,7 +447,7 @@
               <a href="/blog/predictive-maintenance-in-cosmetics-manufacturing-why-it-matters.html">Predictive Maintenance in Cosmetics Manufacturing: Why It Matters</a>
             </h2>
             <p class="post-excerpt">Your Next Unplanned Outage Is Already Brewing A recent piece in Manufacturing Dive highlights a surprisingly common mistake on factory floors:…</p>
-            <a href="/blog/predictive-maintenance-in-cosmetics-manufacturing-why-it-matters.html" class="post-read-more" aria-label="Read Predictive Maintenance in Cosmetics Manufacturing: Why It Matters">
+            <a href="/blog/predictive-maintenance-in-cosmetics-manufacturing-why-it-matters.html" class="post-read-more" aria-label="Read Predictive Maintenance in Cosmetics Manufacturing: Why It Matters" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -452,7 +463,7 @@
               <a href="/blog/mep-budget-cuts-what-beauty-brands-should-know-about-plan-b.html">MEP Budget Cuts: What Beauty Brands Should Know About Plan B</a>
             </h2>
             <p class="post-excerpt">The Safety Net for U.S. Manufacturers Is on the Chopping Block — Again The Trump administration's FY2027 budget proposal once again targets the…</p>
-            <a href="/blog/mep-budget-cuts-what-beauty-brands-should-know-about-plan-b.html" class="post-read-more" aria-label="Read MEP Budget Cuts: What Beauty Brands Should Know About Plan B">
+            <a href="/blog/mep-budget-cuts-what-beauty-brands-should-know-about-plan-b.html" class="post-read-more" aria-label="Read MEP Budget Cuts: What Beauty Brands Should Know About Plan B" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -468,7 +479,7 @@
               <a href="/blog/recycled-content-in-packaging-what-beauty-brands-can-learn.html">Recycled Content in Packaging: What Beauty Brands Can Learn</a>
             </h2>
             <p class="post-excerpt">The Medical Packaging World Just Moved the Sustainability Needle When the most regulated corner of the packaging industry finds a way to safely…</p>
-            <a href="/blog/recycled-content-in-packaging-what-beauty-brands-can-learn.html" class="post-read-more" aria-label="Read Recycled Content in Packaging: What Beauty Brands Can Learn">
+            <a href="/blog/recycled-content-in-packaging-what-beauty-brands-can-learn.html" class="post-read-more" aria-label="Read Recycled Content in Packaging: What Beauty Brands Can Learn" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -484,7 +495,7 @@
               <a href="/blog/chemical-sector-job-losses-signal-trouble-for-us-beauty-brands.html">Chemical Sector Job Losses Signal Trouble for U.S. Beauty Brands</a>
             </h2>
             <p class="post-excerpt">The March Jobs Report Has a Hidden Warning for Cosmetics Brands Manufacturing employment grew by 15,000 jobs in March 2026, a welcome rebound after…</p>
-            <a href="/blog/chemical-sector-job-losses-signal-trouble-for-us-beauty-brands.html" class="post-read-more" aria-label="Read Chemical Sector Job Losses Signal Trouble for U.S. Beauty Brands">
+            <a href="/blog/chemical-sector-job-losses-signal-trouble-for-us-beauty-brands.html" class="post-read-more" aria-label="Read Chemical Sector Job Losses Signal Trouble for U.S. Beauty Brands" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -500,7 +511,7 @@
               <a href="/blog/virginias-71b-manufacturing-push-what-it-means-for-cpg.html">Virginia's $7.1B Manufacturing Push: What It Means for CPG</a>
             </h2>
             <p class="post-excerpt">A $7.1 Billion Signal That Domestic Manufacturing Is Back Virginia just signed four new laws creating grant programs to support manufacturing…</p>
-            <a href="/blog/virginias-71b-manufacturing-push-what-it-means-for-cpg.html" class="post-read-more" aria-label="Read Virginia's $7.1B Manufacturing Push: What It Means for CPG">
+            <a href="/blog/virginias-71b-manufacturing-push-what-it-means-for-cpg.html" class="post-read-more" aria-label="Read Virginia's $7.1B Manufacturing Push: What It Means for CPG" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -516,7 +527,7 @@
               <a href="/blog/epr-laws-are-expandingwhat-beauty-brands-need-to-know-now.html">EPR Laws Are Expanding—What Beauty Brands Need to Know Now</a>
             </h2>
             <p class="post-excerpt">The Beverage Industry's Wake-Up Call Is Your Early Warning Extended Producer Responsibility (EPR) laws are gaining serious momentum across U.S.…</p>
-            <a href="/blog/epr-laws-are-expandingwhat-beauty-brands-need-to-know-now.html" class="post-read-more" aria-label="Read EPR Laws Are Expanding—What Beauty Brands Need to Know Now">
+            <a href="/blog/epr-laws-are-expandingwhat-beauty-brands-need-to-know-now.html" class="post-read-more" aria-label="Read EPR Laws Are Expanding—What Beauty Brands Need to Know Now" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -532,7 +543,7 @@
               <a href="/blog/ultas-store-fulfillment-push-what-it-means-for-cpg-brands.html">Ulta's Store Fulfillment Push: What It Means for CPG Brands</a>
             </h2>
             <p class="post-excerpt">The Beauty Retail Giant Is Betting Big on Speed Ulta Beauty just doubled its ship-from-store fulfillment footprint to 1,000 locations in fiscal year…</p>
-            <a href="/blog/ultas-store-fulfillment-push-what-it-means-for-cpg-brands.html" class="post-read-more" aria-label="Read Ulta's Store Fulfillment Push: What It Means for CPG Brands">
+            <a href="/blog/ultas-store-fulfillment-push-what-it-means-for-cpg-brands.html" class="post-read-more" aria-label="Read Ulta's Store Fulfillment Push: What It Means for CPG Brands" aria-hidden="true" tabindex="-1">
               Read more <span aria-hidden="true">→</span>
             </a>
           </div>
@@ -550,7 +561,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>
-          <p class="footer-logo">CosmeticMFG</p>
+          <p class="footer-logo" aria-hidden="true">CosmeticMFG</p>
           <p class="footer-hq" style="margin-top:8px">
             Headquartered wherever the work is — but our hive is in San Diego, CA.
           </p>

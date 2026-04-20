@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — CosmeticMFG</title>
+  <meta name="description" content="Manufacturing insights, tariff news, and supply chain strategy for beauty and CPG founders — from the CosmeticMFG editorial team." />
+  <link rel="canonical" href="https://cosmeticmfg.com/blog/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAFAF7;
+    --green: #2D4A3E;
+    --green-light: #3d6456;
+    --green-pale: #e8efec;
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-soft: #7a7a74;
+    --border: #e2e2dc;
+    --white: #ffffff;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --shadow-sm: 0 2px 8px rgba(45,74,62,0.07);
+    --shadow-md: 0 8px 32px rgba(45,74,62,0.12);
+    --radius: 4px;
+    --radius-lg: 8px;
+    --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; }
+  a { color: var(--green); text-decoration: none; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--green);
+    outline-offset: 3px;
+    border-radius: var(--radius);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  p { font-size: 1rem; color: var(--ink-mid); }
+
+  .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+  /* Nav */
+  #nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,247,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
+  }
+  #nav.scrolled { box-shadow: var(--shadow-sm); }
+  .nav-inner {
+    display: flex; align-items: center;
+    justify-content: space-between; height: 68px;
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-size: 1.35rem;
+    font-weight: 700; color: var(--ink); text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo:hover { color: var(--green); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.9rem; font-weight: 500; color: var(--ink-mid);
+    text-decoration: none; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1px; background: var(--green); transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover::after { width: 100%; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; font-family: var(--font-sans); font-size: 0.95rem;
+    font-weight: 500; border-radius: var(--radius); cursor: pointer;
+    border: 2px solid transparent; text-decoration: none; white-space: nowrap;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--green); color: var(--white); border-color: var(--green);
+  }
+  .btn-primary:hover {
+    background: var(--green-light); border-color: var(--green-light);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-white {
+    background: var(--white); color: var(--green); border-color: var(--white);
+  }
+  .btn-white:hover { background: var(--cream); }
+  .nav-cta { padding: 10px 20px; font-size: 0.88rem; }
+
+  /* Mobile nav */
+  .nav-toggle {
+    display: none; background: none; border: none; cursor: pointer;
+    padding: 8px; flex-direction: column; gap: 5px;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px; background: var(--ink);
+    transition: transform 0.3s, opacity 0.3s; border-radius: 2px;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile { display: none; padding: 16px 0 24px; border-top: 1px solid var(--border); }
+  .nav-mobile.open { display: block; }
+  .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .nav-mobile ul a {
+    display: block; padding: 10px 0; font-size: 1rem; font-weight: 500;
+    color: var(--ink-mid); text-decoration: none; border-bottom: 1px solid var(--border);
+  }
+  .nav-mobile ul a:hover { color: var(--green); }
+  .nav-mobile .btn { margin-top: 16px; width: 100%; justify-content: center; }
+
+  /* Footer */
+  #footer { background: var(--ink); padding: 48px 0; }
+  .footer-inner {
+    display: flex; flex-wrap: wrap; gap: 28px;
+    align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: var(--font-serif); font-size: 1.2rem;
+    font-weight: 700; color: var(--white);
+  }
+  .footer-hq { font-size: 0.85rem; color: rgba(255,255,255,0.5); max-width: 340px; }
+  .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .footer-copyright { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+  .footer-domain   { font-size: 0.72rem; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-right { align-items: flex-start; }
+  }
+
+
+    /* ── Index hero ── */
+    .blog-hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .blog-hero-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--green);
+      margin-bottom: 14px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .blog-hero p {
+      font-size: 1.1rem; color: var(--ink-mid); max-width: 520px; margin: 0 auto;
+    }
+
+    /* ── Filter bar ── */
+    .filter-bar {
+      padding: 32px 0 0;
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    }
+    .filter-btn {
+      padding: 9px 20px; font-family: var(--font-sans); font-size: 0.85rem;
+      font-weight: 500; border-radius: 20px; cursor: pointer;
+      border: 1.5px solid var(--border); background: var(--white);
+      color: var(--ink-mid); transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--green); color: var(--green); }
+    .filter-btn.active {
+      background: var(--green); color: var(--white); border-color: var(--green);
+    }
+
+    /* ── Post grid ── */
+    .blog-grid-section { padding: 52px 0 100px; }
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .post-card { transition: opacity 0.3s, transform 0.3s; }
+    .post-card.hidden { display: none; }
+    .post-card-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      height: 100%;
+      display: flex; flex-direction: column; gap: 14px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .post-card-inner:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .post-card-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .post-cat {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .post-meta { font-size: 0.75rem; color: var(--ink-soft); white-space: nowrap; }
+    .post-title {
+      font-size: 1.1rem; line-height: 1.35; font-weight: 600; margin: 0;
+    }
+    .post-title a { color: var(--ink); text-decoration: none; }
+    .post-title a:hover { color: var(--green); }
+    .post-excerpt {
+      font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; flex: 1;
+    }
+    .post-read-more {
+      font-size: 0.85rem; font-weight: 500; color: var(--green);
+      text-decoration: none; margin-top: auto;
+      transition: gap 0.2s; display: flex; align-items: center; gap: 4px;
+    }
+    .post-read-more:hover { gap: 8px; }
+
+    /* ── Card thumbnail ── */
+    .post-thumb {
+      width: 100%;
+      height: 180px;
+      border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
+      overflow: hidden;
+      margin: -36px -32px 20px;
+      width: calc(100% + 64px);
+    }
+    .post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .post-thumb-gradient {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 60%, var(--green-pale) 100%);
+    }
+
+    .empty-state {
+      text-align: center; padding: 60px 0; display: none;
+    }
+    .empty-state.visible { display: block; }
+    .empty-state p { color: var(--ink-soft); }
+
+    @media (max-width: 1024px) {
+      .post-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .post-grid { grid-template-columns: 1fr; }
+      .blog-hero { padding: 56px 0 44px; }
+      .post-thumb { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <header id="nav" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="https://cosmeticmfg.com" class="nav-logo" aria-label="CosmeticMFG home">CosmeticMFG</a>
+        <ul class="nav-links" role="list">
+          <li><a href="https://cosmeticmfg.com/#capabilities">Capabilities</a></li>
+          <li><a href="https://cosmeticmfg.com/#packaging-pulse">Packaging Pulse</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="https://cosmeticmfg.com/#contact">Contact</a></li>
+        </ul>
+        <a href="https://cosmeticmfg.com/#contact" class="btn btn-primary nav-cta">Get Introduced</a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-mobile">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+      <div id="nav-mobile" class="nav-mobile" aria-hidden="true">
+        <ul role="list">
+          <li><a href="https://cosmeticmfg.com/#capabilities">Capabilities</a></li>
+          <li><a href="https://cosmeticmfg.com/#packaging-pulse">Packaging Pulse</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="https://cosmeticmfg.com/#contact">Contact</a></li>
+        </ul>
+        <a href="https://cosmeticmfg.com/#contact" class="btn btn-primary">Get Introduced</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="blog-hero">
+      <div class="container">
+        <span class="blog-hero-label">From the desk of CosmeticMFG</span>
+        <h1>Insights for Founders</h1>
+        <p>Manufacturing strategy, tariff news, and supply chain intelligence — for beauty and CPG brands building for scale.</p>
+      </div>
+      <div class="container">
+        <div class="filter-bar" role="group" aria-label="Filter posts by category">
+          <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Tariffs">Tariffs</button>
+        <button class="filter-btn" data-filter="Nearshoring">Nearshoring</button>
+        <button class="filter-btn" data-filter="Beauty Industry">Beauty Industry</button>
+        <button class="filter-btn" data-filter="CPG">CPG</button>
+        <button class="filter-btn" data-filter="Supply Chain">Supply Chain</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="blog-grid-section" aria-label="Blog posts">
+      <div class="container">
+        
+        <div class="post-grid" id="post-grid" role="list">
+          
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 19, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/first-sale-rule-under-fire-what-beauty-brands-should-do-now.html">First Sale Rule Under Fire: What Beauty Brands Should Do Now</a>
+            </h2>
+            <p class="post-excerpt">The Tariff Loophole Congress Wants to Close For decades, importers have used a valuation method known as the &quot;First Sale&quot; rule to reduce the duties…</p>
+            <a href="/blog/first-sale-rule-under-fire-what-beauty-brands-should-do-now.html" class="post-read-more" aria-label="Read First Sale Rule Under Fire: What Beauty Brands Should Do Now">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 19, 2026 &middot; 2 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/new-50-tariff-threat-why-beauty-brands-need-nearshore-now.html">New 50% Tariff Threat: Why Beauty Brands Need Nearshore Now</a>
+            </h2>
+            <p class="post-excerpt">Another Tariff Shock — and This Time, Legal Uncertainty Makes It Worse On April 8, 2026, President Trump announced an immediate 50% tariff on goods…</p>
+            <a href="/blog/new-50-tariff-threat-why-beauty-brands-need-nearshore-now.html" class="post-read-more" aria-label="Read New 50% Tariff Threat: Why Beauty Brands Need Nearshore Now">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Nearshoring">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Nearshoring</span>
+              <div class="post-meta">April 18, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/ai-in-manufacturing-energy-costs-and-why-nearshore-matters.html">AI in Manufacturing: Energy Costs and Why Nearshore Matters</a>
+            </h2>
+            <p class="post-excerpt">The Hidden Price Tag of AI-Driven Manufacturing AI and robotics are transforming factory floors — optimizing production schedules, reducing waste,…</p>
+            <a href="/blog/ai-in-manufacturing-energy-costs-and-why-nearshore-matters.html" class="post-read-more" aria-label="Read AI in Manufacturing: Energy Costs and Why Nearshore Matters">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 18, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/tariff-refund-confusion-is-a-wake-up-call-for-beauty-brands.html">Tariff Refund Confusion Is a Wake-Up Call for Beauty Brands</a>
+            </h2>
+            <p class="post-excerpt">The Tariff Mess Just Got Messier If you manufacture cosmetics or personal care products overseas and import them into the U.S., you may be owed…</p>
+            <a href="/blog/tariff-refund-confusion-is-a-wake-up-call-for-beauty-brands.html" class="post-read-more" aria-label="Read Tariff Refund Confusion Is a Wake-Up Call for Beauty Brands">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Nearshoring">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Nearshoring</span>
+              <div class="post-meta">April 17, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/what-a-15t-defense-budget-means-for-beauty-supply-chains.html">What a $1.5T Defense Budget Means for Beauty Supply Chains</a>
+            </h2>
+            <p class="post-excerpt">The Ripple Effect You Didn't See Coming At first glance, a $1.5 trillion Department of Defense budget proposal has nothing to do with your next…</p>
+            <a href="/blog/what-a-15t-defense-budget-means-for-beauty-supply-chains.html" class="post-read-more" aria-label="Read What a $1.5T Defense Budget Means for Beauty Supply Chains">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Nearshoring">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Nearshoring</span>
+              <div class="post-meta">April 17, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/ai-translation-in-manufacturing-what-it-means-for-nearshore.html">AI Translation in Manufacturing: What It Means for Nearshore</a>
+            </h2>
+            <p class="post-excerpt">The Language Barrier Is a Safety and Compliance Risk — AI Is Closing the Gap When Volvo and Mars roll out AI-powered translation platforms on the…</p>
+            <a href="/blog/ai-translation-in-manufacturing-what-it-means-for-nearshore.html" class="post-read-more" aria-label="Read AI Translation in Manufacturing: What It Means for Nearshore">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 16, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/mep-budget-cuts-what-beauty-brands-should-know-about-plan-b.html">MEP Budget Cuts: What Beauty Brands Should Know About Plan B</a>
+            </h2>
+            <p class="post-excerpt">The Safety Net for U.S. Manufacturers Is on the Chopping Block — Again The Trump administration's FY2027 budget proposal once again targets the…</p>
+            <a href="/blog/mep-budget-cuts-what-beauty-brands-should-know-about-plan-b.html" class="post-read-more" aria-label="Read MEP Budget Cuts: What Beauty Brands Should Know About Plan B">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 16, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/predictive-maintenance-in-cosmetics-manufacturing-why-it-matters.html">Predictive Maintenance in Cosmetics Manufacturing: Why It Matters</a>
+            </h2>
+            <p class="post-excerpt">Your Next Unplanned Outage Is Already Brewing A recent piece in Manufacturing Dive highlights a surprisingly common mistake on factory floors:…</p>
+            <a href="/blog/predictive-maintenance-in-cosmetics-manufacturing-why-it-matters.html" class="post-read-more" aria-label="Read Predictive Maintenance in Cosmetics Manufacturing: Why It Matters">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 15, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/chemical-sector-job-losses-signal-trouble-for-us-beauty-brands.html">Chemical Sector Job Losses Signal Trouble for U.S. Beauty Brands</a>
+            </h2>
+            <p class="post-excerpt">The March Jobs Report Has a Hidden Warning for Cosmetics Brands Manufacturing employment grew by 15,000 jobs in March 2026, a welcome rebound after…</p>
+            <a href="/blog/chemical-sector-job-losses-signal-trouble-for-us-beauty-brands.html" class="post-read-more" aria-label="Read Chemical Sector Job Losses Signal Trouble for U.S. Beauty Brands">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Nearshoring">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Nearshoring</span>
+              <div class="post-meta">April 15, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/recycled-content-in-packaging-what-beauty-brands-can-learn.html">Recycled Content in Packaging: What Beauty Brands Can Learn</a>
+            </h2>
+            <p class="post-excerpt">The Medical Packaging World Just Moved the Sustainability Needle When the most regulated corner of the packaging industry finds a way to safely…</p>
+            <a href="/blog/recycled-content-in-packaging-what-beauty-brands-can-learn.html" class="post-read-more" aria-label="Read Recycled Content in Packaging: What Beauty Brands Can Learn">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 14, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/epr-laws-are-expandingwhat-beauty-brands-need-to-know-now.html">EPR Laws Are Expanding—What Beauty Brands Need to Know Now</a>
+            </h2>
+            <p class="post-excerpt">The Beverage Industry's Wake-Up Call Is Your Early Warning Extended Producer Responsibility (EPR) laws are gaining serious momentum across U.S.…</p>
+            <a href="/blog/epr-laws-are-expandingwhat-beauty-brands-need-to-know-now.html" class="post-read-more" aria-label="Read EPR Laws Are Expanding—What Beauty Brands Need to Know Now">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 14, 2026 &middot; 3 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/virginias-71b-manufacturing-push-what-it-means-for-cpg.html">Virginia's $7.1B Manufacturing Push: What It Means for CPG</a>
+            </h2>
+            <p class="post-excerpt">A $7.1 Billion Signal That Domestic Manufacturing Is Back Virginia just signed four new laws creating grant programs to support manufacturing…</p>
+            <a href="/blog/virginias-71b-manufacturing-push-what-it-means-for-cpg.html" class="post-read-more" aria-label="Read Virginia's $7.1B Manufacturing Push: What It Means for CPG">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        <article class="post-card" data-category="Tariffs">
+          <div class="post-card-inner">
+            <div class="post-thumb"><div class="post-thumb-gradient" aria-hidden="true"></div></div>
+            <div class="post-card-top">
+              <span class="post-cat">Tariffs</span>
+              <div class="post-meta">April 13, 2026 &middot; 2 min read</div>
+            </div>
+            <h2 class="post-title">
+              <a href="/blog/ultas-store-fulfillment-push-what-it-means-for-cpg-brands.html">Ulta's Store Fulfillment Push: What It Means for CPG Brands</a>
+            </h2>
+            <p class="post-excerpt">The Beauty Retail Giant Is Betting Big on Speed Ulta Beauty just doubled its ship-from-store fulfillment footprint to 1,000 locations in fiscal year…</p>
+            <a href="/blog/ultas-store-fulfillment-push-what-it-means-for-cpg-brands.html" class="post-read-more" aria-label="Read Ulta's Store Fulfillment Push: What It Means for CPG Brands">
+              Read more <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+        </div>
+        <div class="empty-state" id="empty-state" aria-live="polite">
+          <p>No posts in this category yet.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <p class="footer-logo">CosmeticMFG</p>
+          <p class="footer-hq" style="margin-top:8px">
+            Headquartered wherever the work is — but our hive is in San Diego, CA.
+          </p>
+        </div>
+        <div class="footer-right">
+          <p class="footer-copyright">&#169; 2026 CosmeticMFG. A Friend of a Founder initiative.</p>
+          <p class="footer-domain">cosmeticmfg.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  const toggle = document.querySelector('.nav-toggle');
+  const mobile = document.getElementById('nav-mobile');
+  if (toggle && mobile) {
+    toggle.addEventListener('click', () => {
+      const exp = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!exp));
+      mobile.classList.toggle('open', !exp);
+      mobile.setAttribute('aria-hidden', String(exp));
+    });
+    mobile.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        mobile.classList.remove('open');
+        mobile.setAttribute('aria-hidden', 'true');
+      });
+    });
+  }
+
+
+    // ── Category filter ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards      = document.querySelectorAll('.post-card');
+    const emptyState = document.getElementById('empty-state');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        let visible = 0;
+        cards.forEach((card) => {
+          const match = filter === 'All' || card.dataset.category === filter;
+          card.classList.toggle('hidden', !match);
+          if (match) visible++;
+        });
+
+        if (emptyState) emptyState.classList.toggle('visible', visible === 0);
+      });
+    });
+  </script>
+</body>
+</html>

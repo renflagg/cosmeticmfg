@@ -75,6 +75,23 @@
       border-radius: var(--radius);
     }
 
+    /* ─── Skip navigation ─── */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--green);
+      color: var(--white);
+      padding: 8px 16px;
+      z-index: 999;
+      border-radius: 0 0 4px 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
     /* ─── Typography ─── */
     h1, h2, h3, h4 {
       font-family: var(--font-serif);
@@ -1145,6 +1162,7 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- ══════════════════════════════
        1. STICKY NAV
@@ -1158,7 +1176,7 @@
           <li><a href="#capabilities">Capabilities</a></li>
           <li><a href="#packaging-pulse">Global Packaging Pulse</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" aria-label="Jump to contact section">Contact</a></li>
         </ul>
 
         <a href="#contact" class="btn btn-primary nav-cta" aria-label="Get introduced to a manufacturer">Get Introduced</a>
@@ -1180,13 +1198,14 @@
           <li><a href="#capabilities">Capabilities</a></li>
           <li><a href="#packaging-pulse">Global Packaging Pulse</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" aria-label="Jump to contact section">Contact</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Get Introduced</a>
+        <a href="#contact" class="btn btn-primary" aria-label="Get introduced to a manufacturer">Get Introduced</a>
       </div>
     </div>
   </header>
 
+  <main id="main-content">
 
   <!-- ══════════════════════════════
        2. HERO
@@ -1217,7 +1236,7 @@
         </p>
 
         <div class="hero-actions reveal reveal-delay-3">
-          <a href="#contact" class="btn btn-primary">Get Introduced</a>
+          <a href="#contact" class="btn btn-primary" aria-label="Request a free manufacturing introduction">Get Introduced</a>
           <a href="#capabilities" class="btn btn-outline">See What's Possible</a>
         </div>
       </div>
@@ -1231,17 +1250,17 @@
   <div id="credibility" role="region" aria-label="Key stats">
     <div class="container">
       <div class="cred-inner">
-        <div class="cred-item reveal">
-          <span class="cred-number">20+</span>
-          <span class="cred-label">Vetted Manufacturers</span>
+        <div class="cred-item reveal" role="img" aria-label="20 plus vetted manufacturers">
+          <span class="cred-number" aria-hidden="true">20+</span>
+          <span class="cred-label" aria-hidden="true">Vetted Manufacturers</span>
         </div>
-        <div class="cred-item reveal reveal-delay-1">
-          <span class="cred-number">10</span>
-          <span class="cred-label">Countries</span>
+        <div class="cred-item reveal reveal-delay-1" role="img" aria-label="Sourced across 10 countries">
+          <span class="cred-number" aria-hidden="true">10</span>
+          <span class="cred-label" aria-hidden="true">Countries</span>
         </div>
-        <div class="cred-item reveal reveal-delay-2">
-          <span class="cred-number">Always Free</span>
-          <span class="cred-label">The Introduction</span>
+        <div class="cred-item reveal reveal-delay-2" role="img" aria-label="The introduction is always free">
+          <span class="cred-number" aria-hidden="true">Always Free</span>
+          <span class="cred-label" aria-hidden="true">The Introduction</span>
         </div>
       </div>
     </div>
@@ -1756,6 +1775,8 @@
     </div>
   </section>
 
+
+  </main><!-- /#main-content -->
 
   <!-- ══════════════════════════════
        8. FOOTER

@@ -28,7 +28,7 @@
       --green-pale: #e8efec;
       --ink: #1a1a18;
       --ink-mid: #4a4a46;
-      --ink-soft: #7a7a74;
+      --ink-soft: #595959;
       --border: #e2e2dc;
       --white: #ffffff;
       --font-serif: 'Playfair Display', Georgia, serif;
@@ -619,6 +619,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      background: rgba(255,255,255,0.95);
     }
 
     .pulse-card-meta {
@@ -1048,12 +1049,12 @@
 
     .footer-copyright {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.5);
     }
 
     .footer-domain {
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.5);
       letter-spacing: 0.06em;
     }
 
@@ -1195,6 +1196,7 @@
       <img
         src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1800&auto=format&fit=crop&q=80"
         alt=""
+        role="presentation"
         loading="eager"
         fetchpriority="high"
       />
@@ -1762,7 +1764,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>
-          <p class="footer-logo">CosmeticMFG</p>
+          <p class="footer-logo" aria-hidden="true">CosmeticMFG</p>
           <p class="footer-hq" style="margin-top:10px;">
             Headquartered wherever the work is — but our hive is in San Diego, CA.
           </p>
